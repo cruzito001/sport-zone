@@ -6,6 +6,7 @@ const carouselItems = [
   { image: '/images/poner-en-renta.jpg', title: 'Poner en Renta', link: '/poner-en-renta' },
   { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/crear-partido' },
   { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/unirse' },
+  { image: '/images/unirse-torneo.jpg', title: 'Unirse a Torneo', link: '/torneos' },
 ]
 
 export default function Carousel() {

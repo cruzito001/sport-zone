@@ -67,6 +67,7 @@
   height: 400px;
   object-fit: cover;
   will-change: transform;
+  filter: blur(3px);
 }
 
 .carousel-content {
@@ -83,7 +84,8 @@
 .carousel-content h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 
 .cta-button {

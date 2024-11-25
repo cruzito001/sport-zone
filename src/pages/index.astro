@@ -2,12 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import AboutUs from '../components/AboutUs/AboutUs';
 import Carousel from '../components/Carousel/Carousel';
+import PopularFields from '../components/PopularFields/PopularFields';
 ---
 
 <Layout title="SportZone - Tu plataforma de fútbol amateur">
   <main>
     <AboutUs client:load />
     <Carousel client:load />
+    <PopularFields client:load />
   </main>
 </Layout>
 
