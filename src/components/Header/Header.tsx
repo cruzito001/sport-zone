@@ -4,6 +4,10 @@ import './Header.css'
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
   return (
     <header className="card header">
       <div className="tools">
@@ -24,12 +28,12 @@ export default function Header() {
         
         <button 
           className="mobile-menu-button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className={isMenuOpen ? 'open' : ''}></span>
+          <span className={isMenuOpen ? 'open' : ''}></span>
+          <span className={isMenuOpen ? 'open' : ''}></span>
         </button>
 
         <nav className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>

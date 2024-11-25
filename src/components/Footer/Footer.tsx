@@ -1,4 +1,4 @@
-import { GithubIcon, TwitterIcon, InstagramIcon, TwitchIcon } from 'lucide-react'
+import { TwitterIcon, InstagramIcon, FacebookIcon } from 'lucide-react'
 import './Footer.css'
 
 export default function Footer() {
@@ -21,17 +21,14 @@ export default function Footer() {
             SportZone
           </div>
           <div className="footer-social">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <GithubIcon className="social-icon" />
-            </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
               <TwitterIcon className="social-icon" />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link">
               <InstagramIcon className="social-icon" />
             </a>
-            <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" className="social-link">
-              <TwitchIcon className="social-icon" />
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
+              <FacebookIcon className="social-icon" />
             </a>
           </div>
         </div>
