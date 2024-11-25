@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AboutUs from '../components/AboutUs/AboutUs';
+import Carousel from '../components/Carousel/Carousel';
 ---
 
-<Layout title="SportZone - Renta y Juega Fútbol">
+<Layout title="SportZone - Tu plataforma de fútbol amateur">
   <main>
-    <h1>Bienvenido a SportZone</h1>
-    <!-- Aquí irá el contenido principal -->
+    <AboutUs client:load />
+    <Carousel client:load />
   </main>
 </Layout>
 
