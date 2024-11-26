@@ -9,13 +9,13 @@ export const popularFields = [
     {
       "nombre": "Sports Plaza",
       "tipo_cesped": "Artificial",
-      "tipo": "Fútbol 7 y 9",
+      "tipo": "Fútbol 9",
       "extras": "Instalaciones modernas con vestidores y regaderas",
       "coordenadas": [25.6975, -100.2566]
     },
     {
       "nombre": "Forever Green",
-      "tipo_cesped": "Artificial de alta resistencia",
+      "tipo_cesped": "Artificial",
       "tipo": "Fútbol 7",
       "extras": "Césped de calidad 'Epic Grass', sensación natural",
       "coordenadas": [25.7489, -100.3688]
