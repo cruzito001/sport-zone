@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import './PaymentModal.css';
+import './CreateMatchModal.css';
 
-interface PaymentModalProps {
+interface CreateMatchModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
-  const [paymentStatus, setPaymentStatus] = useState<'processing' | 'completed'>('processing');
-  const [folio, setFolio] = useState<string>('');
+const CreateMatchModal: React.FC<CreateMatchModalProps> = ({ isOpen, onClose }) => {
+  const [status, setStatus] = useState<'creating' | 'completed'>('creating');
+  const [matchId, setMatchId] = useState<string>('');
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => {
-        setPaymentStatus('completed');
-        setFolio(`SpZne-${Math.floor(1000 + Math.random() * 9000)}`);
-      }, 3000);
+        setStatus('completed');
+        setMatchId(`Match-${Math.floor(1000 + Math.random() * 9000)}`);
+      }, 2000);
     } else {
-      setPaymentStatus('processing');
+      setStatus('creating');
       setCopied(false);
     }
   }, [isOpen]);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(folio);
+    navigator.clipboard.writeText(matchId);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -32,32 +32,32 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="payment-modal-overlay">
-      <div className="payment-modal">
+    <div className="create-match-modal-overlay">
+      <div className="create-match-modal">
         <div className="modal-header">
           <div className="modal-buttons">
             <span className="modal-button red"></span>
             <span className="modal-button yellow"></span>
             <span className="modal-button green"></span>
           </div>
-          <h2>Pago</h2>
+          <h2>Crear Partido</h2>
         </div>
         <div className="modal-content">
-          {paymentStatus === 'processing' ? (
-            <div className="processing">
+          {status === 'creating' ? (
+            <div className="creating">
               <div className="spinner"></div>
-              <p>Procesando pago...</p>
+              <p>Creando partido...</p>
             </div>
           ) : (
             <div className="completed">
               <div className="checkmark">✓</div>
-              <h3>Gracias por su pago</h3>
-              <div className="folio-container">
-                <p>Su folio es: <strong>{folio}</strong></p>
+              <h3>¡Partido creado exitosamente!</h3>
+              <div className="match-id-container">
+                <p>ID del Partido: <strong>{matchId}</strong></p>
                 <button 
                   className={`copy-button ${copied ? 'copied' : ''}`}
                   onClick={copyToClipboard}
-                  title="Copiar folio"
+                  title="Copiar ID"
                 >
                   {copied ? '✓' : '📋'}
                 </button>
@@ -65,14 +65,9 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
             </div>
           )}
         </div>
-        {paymentStatus === 'completed' && (
+        {status === 'completed' && (
           <div className="modal-footer">
-            <button onClick={onClose} className="close-button">
-              Cerrar
-            </button>
-            <button onClick={() => window.location.href = '/partidos'} className="create-game-button">
-              Crear Partido
-            </button>
+            <button onClick={onClose} className="close-button">Cerrar</button>
           </div>
         )}
       </div>
@@ -80,5 +75,5 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default PaymentModal;
+export default CreateMatchModal;
 

@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PartidosAccordion from '../components/PartidosAccordion/PartidosAccordion';
+---
+
+<Layout title="Partidos - SportZone">
+  <main class="container mx-auto px-4 py-8">
+    <PartidosAccordion client:load />
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+  }
+</style>
+
