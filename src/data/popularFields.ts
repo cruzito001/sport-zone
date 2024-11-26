@@ -19,20 +19,6 @@ export const popularFields = [
       "tipo": "Fútbol 7",
       "extras": "Césped de calidad 'Epic Grass', sensación natural",
       "coordenadas": [25.7489, -100.3688]
-    },
-    {
-      "nombre": "Gol Regio",
-      "tipo_cesped": "Natural",
-      "tipo": "Fútbol 11",
-      "extras": "Espacios abiertos para eventos deportivos",
-      "coordenadas": [25.7452, -100.3047]
-    },
-    {
-      "nombre": "Fútbol Monterrey",
-      "tipo_cesped": "Artificial",
-      "tipo": "Fútbol rápido",
-      "extras": "Amplio estacionamiento, áreas techadas",
-      "coordenadas": [25.6699, -100.3090]
     }
   ];
   

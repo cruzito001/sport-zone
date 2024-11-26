@@ -38,12 +38,12 @@ export default function Header() {
 
         <nav className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
           <ul>
-            <li><a href="/rentar">Rentar</a></li>
-            <li><a href="/poner-en-renta">Poner en Renta</a></li>
-            <li><a href="/crear-partido">Crear Partido</a></li>
-            <li><a href="/unirse">Unirse a Partidos</a></li>
+            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/canchas">Canchas</a></li>
+            <li><a href="/partidos">Partidos</a></li>
             <li><a href="/torneos">Torneos</a></li>
             <li><a href="/ranking">Ranking</a></li>
+            <li><a href="/contacto">Contacto</a></li>
           </ul>
         </nav>
       </div>

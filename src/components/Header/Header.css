@@ -61,25 +61,19 @@
   padding: 0.5rem;
 }
 
-.logo img {
-  max-height: 50px;
-  width: auto;
-}
-
-.logo:hover {
-  color: #666;
-  transform: translateY(-2px);
-}
-
 .logo-image {
   height: 60px;
   width: auto;
   object-fit: contain;
 }
 
+.logo:hover {
+  transform: translateY(-2px);
+}
+
 .nav-menu ul {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -88,31 +82,33 @@
 .nav-menu a {
   color: #000000;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
   padding: 0.5rem 0;
 }
 
-.nav-menu a:hover {
-  color: #666;
-  transform: translateY(-2px);
-}
-
-.nav-menu a::after {
+.nav-menu a::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #666;
+  background-color: #008000; /* Changed from #4ade80 */
   transform: scaleX(0);
+  transform-origin: right;
   transition: transform 0.3s ease;
 }
 
-.nav-menu a:hover::after {
+.nav-menu a:hover {
+  color: #008000; /* Changed from #4ade80 */
+}
+
+.nav-menu a:hover::before {
   transform: scaleX(1);
+  transform-origin: left;
 }
 
 .mobile-menu-button {
@@ -132,18 +128,6 @@
   background-color: #000000;
   transition: all 0.3s ease;
   position: relative;
-}
-
-.mobile-menu-button span:nth-child(1) {
-  top: 0;
-}
-
-.mobile-menu-button span:nth-child(2) {
-  top: 6px;
-}
-
-.mobile-menu-button span:nth-child(3) {
-  top: 12px;
 }
 
 .mobile-menu-button span.open:nth-child(1) {
@@ -177,6 +161,10 @@
     display: none;
     width: 100%;
     order: 2;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+    padding-top: 1rem;
   }
 
   .nav-menu.open {
@@ -186,13 +174,34 @@
   .nav-menu ul {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .nav-menu a {
-    padding: 0.5rem 1rem;
+    display: block;
+    padding: 0.5rem;
     width: 100%;
     text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .nav-menu a::before {
+    display: none;
+  }
+
+  .nav-menu a:hover {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 1rem;
+  }
+
+  .logo-image {
+    height: 50px;
   }
 }
 

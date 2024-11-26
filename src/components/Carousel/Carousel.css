@@ -91,7 +91,7 @@
 .cta-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #4ade80;
+  background-color: #008000;
   color: #ffffff;
   text-decoration: none;
   border-radius: 8px;
@@ -102,7 +102,7 @@
 }
 
 .cta-button:hover {
-  background-color: #22c55e;
+  background-color: #006400;
   transform: translateY(-2px);
 }
 
@@ -130,7 +130,7 @@
 }
 
 .dot.active {
-  background-color: #4ade80;
+  background-color: #008000;
   transform: scale(1.2);
 }
 
