@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import './RentaAccordion.css'
+import PaymentModal from '../PaymentModal/PaymentModal'
 
 interface RentaAccordionProps {
   numCampos: number;
@@ -19,6 +20,7 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
   const [selectedDate, setSelectedDate] = useState<string>('')
   const [selectedTime, setSelectedTime] = useState<string>('')
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null)
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false)
   
   const getNextFourDays = () => {
     const days = [];
@@ -156,7 +158,10 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                       <span>PayPal</span>
                       <img src="/images/paypal-logo.png" alt="PayPal" className="paypal-logo" />
                     </label>
-                    <button className="pay-button">
+                    <button 
+                      className="pay-button"
+                      onClick={() => setIsPaymentModalOpen(true)}
+                    >
                       Pagar
                     </button>
                   </div>
@@ -166,6 +171,10 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
           )}
         </div>
       ))}
+      <PaymentModal 
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+      />
     </div>
   )
 }
