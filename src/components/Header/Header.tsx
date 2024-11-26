@@ -23,7 +23,7 @@ export default function Header() {
       </div>
       <div className="header-content">
         <a href="/" className="logo">
-          SportZone
+          <img src="/images/logo.png" alt="SportZone Logo" className="logo-image" />
         </a>
         
         <button 

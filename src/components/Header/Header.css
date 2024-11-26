@@ -56,11 +56,25 @@
   text-decoration: none;
   font-size: 1.25rem;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.logo img {
+  max-height: 50px;
+  width: auto;
 }
 
 .logo:hover {
   color: #666;
   transform: translateY(-2px);
+}
+
+.logo-image {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-menu ul {

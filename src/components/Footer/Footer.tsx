@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-main">
           <div className="footer-logo">
-            SportZone
+            <img src="/images/logo.png" alt="SportZone Logo" className="logo-image" />
           </div>
           <div className="footer-social">
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
