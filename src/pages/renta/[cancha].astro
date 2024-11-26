@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RentaAccordion from '../../components/RentaAccordion/RentaAccordion';
+import { popularFields } from '../../data/popularFields';
+
+export function getStaticPaths() {
+  return popularFields.map(field => ({
+    params: { cancha: field.nombre },
+    props: { field }
+  }));
+}
+
+const { field } = Astro.props;
+---
+
+<Layout title={`Rentar - ${field.nombre}`}>
+  <main class="main-container">
+    <h1>{field.nombre}</h1>
+    <RentaAccordion numCampos={parseInt(field.campo)} client:load />
+  </main>
+</Layout>
+
+<style>
+  .main-container {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+

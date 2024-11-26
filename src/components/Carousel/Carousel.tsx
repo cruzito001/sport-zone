@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import './Carousel.css'
 
 const carouselItems = [
-  { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/rentar' },
+  { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/canchas' },
   { image: '/images/poner-en-renta.jpg', title: 'Poner en Renta', link: '/poner-en-renta' },
   { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/crear-partido' },
   { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/unirse' },

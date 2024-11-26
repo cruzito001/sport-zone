@@ -5,79 +5,69 @@ import { popularFields } from '../data/popularFields';
 
 <Layout title="Canchas - SportZone">
   <main class="canchas-container">
-    <div class="content-wrapper">
-      <h1>Nuestras Canchas</h1>
-      
-      <div class="filters">
-        <select id="tipoFilter" class="filter-select">
-          <option value="">Tipo de Fútbol</option>
-          <option value="Fútbol rápido">Fútbol rápido</option>
-          <option value="Fútbol 7">Fútbol 7</option>
-          <option value="Fútbol 9">Fútbol 9</option>
-          <option value="Fútbol 11">Fútbol 11</option>
-        </select>
-        <select id="cespedFilter" class="filter-select">
-          <option value="">Tipo de Césped</option>
-          <option value="Artificial">Artificial</option>
-          <option value="Natural">Natural</option>
-        </select>
-      </div>
-
-      <div class="table-card">
-        <div class="table-responsive">
-          <table id="canchasTable">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Césped</th>
-                <th>Extras</th>
-                <th>Ubicación</th>
-                <th>Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              {popularFields.map((field) => (
-                <tr>
-                  <td class="field-name">{field.nombre}</td>
-                  <td>{field.tipo}</td>
-                  <td>{field.tipo_cesped}</td>
-                  <td class="extras">{field.extras}</td>
-                  <td>
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${field.coordenadas[0]},${field.coordenadas[1]}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="map-link"
-                    >
-                      Ver en mapa
-                    </a>
-                  </td>
-                  <td>
-                    <a href={`/renta?cancha=${encodeURIComponent(field.nombre)}`} class="rent-link">
-                      Rentar
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <h1>Nuestras Canchas</h1>
+    <div class="filters">
+      <select id="tipoFilter" class="filter-select">
+        <option value="">Tipo de Fútbol</option>
+        <option value="Futbol 7">Fútbol 7</option>
+        <option value="Futbol 9">Fútbol 9</option>
+        <option value="Futbol 11">Fútbol 11</option>
+        <option value="Futbol Rápido">Fútbol Rápido</option>
+        <option value="Futbol Infantil">Fútbol Infantil</option>
+      </select>
+      <select id="cespedFilter" class="filter-select">
+        <option value="">Tipo de Césped</option>
+        <option value="Artificial">Artificial</option>
+        <option value="Natural">Natural</option>
+      </select>
+    </div>
+    <div class="table-container">
+      <table id="canchasTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Tipo de Césped</th>
+            <th>Extras</th>
+            <th>Ubicación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {popularFields.map((field) => (
+            <tr>
+              <td>{field.nombre}</td>
+              <td>{field.tipo}</td>
+              <td>{field.tipo_de_césped}</td>
+              <td>{field.extras}</td>
+              <td>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${field.direccion_en_coordenadas}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="map-link"
+                >
+                  Ver mapa
+                </a>
+              </td>
+              <td>
+                <a href={`/renta/${encodeURIComponent(field.nombre)}`} class="rent-link">
+                  Rentar
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </main>
 </Layout>
 
 <style>
   .canchas-container {
-    min-height: 100vh;
-    padding: 2rem 1rem;
-    background: linear-gradient(145deg, #f0f0f0, #ffffff);
-  }
-
-  .content-wrapper {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    padding: 0 1rem;
   }
 
   h1 {
@@ -85,7 +75,6 @@ import { popularFields } from '../data/popularFields';
     color: #333;
     text-align: center;
     margin-bottom: 2rem;
-    font-weight: 600;
   }
 
   .filters {
@@ -96,99 +85,65 @@ import { popularFields } from '../data/popularFields';
   }
 
   .filter-select {
-    padding: 0.75rem 2rem;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
     font-size: 1rem;
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    min-width: 200px;
   }
 
   .filter-select:hover {
     border-color: #008000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .filter-select:focus {
     outline: none;
     border-color: #008000;
-    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.1);
+    box-shadow: 0 0 0 2px rgba(0, 128, 0, 0.2);
   }
 
-  .table-card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05),
-                0 10px 20px rgba(0, 0, 0, 0.03);
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .table-card:hover {
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.07),
-                0 12px 24px rgba(0, 0, 0, 0.04);
-  }
-
-  .table-responsive {
+  .table-container {
     overflow-x: auto;
-    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
   }
 
   th {
-    padding: 1.25rem 1rem;
-    text-align: left;
+    background-color: #f1f3f5;
     font-weight: 600;
     color: #333;
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #eee;
-  }
-
-  td {
-    padding: 1.25rem 1rem;
-    border-bottom: 1px solid #eee;
-    color: #444;
-  }
-
-  tr:last-child td {
-    border-bottom: none;
   }
 
   tr:hover {
     background-color: #f8f9fa;
   }
 
-  .field-name {
-    font-weight: 600;
-    color: #333;
-  }
-
-  .extras {
-    max-width: 300px;
-    line-height: 1.5;
-  }
-
   .map-link, .rent-link {
     display: inline-block;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     color: #ffffff;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 500;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
+    min-width: 100px;
     text-align: center;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 128, 0, 0.2);
   }
 
   .map-link {
@@ -196,38 +151,24 @@ import { popularFields } from '../data/popularFields';
   }
 
   .rent-link {
-    background-color: #0056b3;
+    background-color: #2563eb;
   }
 
-  .map-link:hover, .rent-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 128, 0, 0.3);
+  .rent-link:hover {
+    background-color: #1d4ed8;
   }
 
   .map-link:hover {
     background-color: #006400;
   }
 
-  .rent-link:hover {
-    background-color: #004494;
-  }
-
   @media (max-width: 768px) {
     .filters {
       flex-direction: column;
-      align-items: stretch;
     }
 
     .filter-select {
       width: 100%;
-    }
-
-    th, td {
-      padding: 1rem 0.75rem;
-    }
-
-    .extras {
-      max-width: 200px;
     }
   }
 </style>
@@ -241,17 +182,21 @@ import { popularFields } from '../data/popularFields';
 
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      const tipo = row.getElementsByTagName('td')[1].textContent;
-      const cesped = row.getElementsByTagName('td')[2].textContent;
+      const tipo = row.getElementsByTagName('td')[1].textContent || '';
+      const cesped = row.getElementsByTagName('td')[2].textContent || '';
 
-      const tipoMatch = tipoFilter.value === '' || tipo?.includes(tipoFilter.value);
-      const cespedMatch = cespedFilter.value === '' || cesped === cespedFilter.value;
+      const tipoMatch = tipoFilter.value === '' || 
+        tipo.toLowerCase().includes(tipoFilter.value.toLowerCase());
+      const cespedMatch = cespedFilter.value === '' || 
+        cesped.toLowerCase().includes(cespedFilter.value.toLowerCase());
 
       row.style.display = tipoMatch && cespedMatch ? '' : 'none';
     }
   }
 
-  document.getElementById('tipoFilter')?.addEventListener('change', filterTable);
-  document.getElementById('cespedFilter')?.addEventListener('change', filterTable);
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('tipoFilter')?.addEventListener('change', filterTable);
+    document.getElementById('cespedFilter')?.addEventListener('change', filterTable);
+  });
 </script>
 

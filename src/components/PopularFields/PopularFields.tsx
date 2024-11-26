@@ -24,9 +24,9 @@ const PopularFields = () => {
               <div key={index} className="field-card">
                 <h3>{field.nombre}</h3>
                 <p><strong>Tipo:</strong> {field.tipo}</p>
-                <p><strong>Césped:</strong> {field.tipo_cesped}</p>
+                <p><strong>Césped:</strong> {field.tipo_de_césped}</p>
                 <p className="extras">{field.extras}</p>
-                <a href={`https://www.google.com/maps/search/?api=1&query=${field.coordenadas[0]},${field.coordenadas[1]}`} target="_blank" rel="noopener noreferrer" className="map-link">Ver en mapa</a>
+                <a href={`https://www.google.com/maps/search/?api=1&query=${field.direccion_en_coordenadas[0]},${field.direccion_en_coordenadas[1]}`} target="_blank" rel="noopener noreferrer" className="map-link">Ver en mapa</a>
               </div>
             ))}
           </div>

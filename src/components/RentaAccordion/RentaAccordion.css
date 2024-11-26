@@ -1,0 +1,307 @@
+.renta-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.accordion-item {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+  background-color: #f0f0f0;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mac-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.mac-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.accordion-item:hover .mac-button {
+  transform: scale(1.1);
+}
+
+.mac-button.red { background-color: #ff5f56; }
+.mac-button.yellow { background-color: #ffbd2e; }
+.mac-button.green { background-color: #27c93f; }
+
+.accordion-title {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.accordion-content {
+  padding: 1.5rem;
+}
+
+.renta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.calendar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.month-selector {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.date-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #333;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-button.selected {
+  background: #4ade80;
+  color: white;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.time-slot {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-slot.selected {
+  background: #4ade80;
+  color: white;
+}
+
+.payment-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.card-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.card-number-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding-right: 80px;
+}
+
+.card-logos {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-logo {
+  height: 20px;
+  width: auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.form-input {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+}
+
+.payment-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #666;
+  margin: 1rem 0;
+}
+
+.payment-divider::before,
+.payment-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.payment-divider span {
+  padding: 0 1rem;
+}
+
+.paypal-logo {
+  height: 24px;
+  margin-left: auto;
+}
+
+.pay-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #4ade80;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pay-button:hover {
+  background: #22c55e;
+}
+
+@media (max-width: 1024px) {
+  .renta-container {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .renta-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .time-slots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .accordion-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.field-image {
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.field-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.field-image:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .field-image {
+    margin-bottom: 1rem;
+  }
+  
+  .field-image img {
+    height: 150px;
+  }
+}
+

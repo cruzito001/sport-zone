@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { popularFields } from '../data/popularFields';
+
+const currentUrl = Astro.url;
+const cancha = currentUrl.searchParams.get('cancha');
+
+console.log("URL actual:", currentUrl.toString());
+console.log("Cancha recibida:", cancha);
+
+const field = popularFields.find(f => f.nombre === cancha);
+console.log("Campo encontrado:", field);
+
+if (!cancha || !field) {
+  return Astro.redirect('/canchas');
+}
+---
+
+<Layout title={`Rentar - ${field.nombre}`}>
+  <main class="renta-container">
+    <div class="debug-info">
+      <h3>Información de Depuración</h3>
+      <p>URL: {currentUrl.toString()}</p>
+      <p>Cancha: {cancha}</p>
+      <pre>Campo: {JSON.stringify(field, null, 2)}</pre>
+    </div>
+
+    <div class="content-container">
+      <h1>Rentar {field.nombre}</h1>
+      <div class="field-info">
+        <p><strong>Tipo:</strong> {field.tipo}</p>
+        <p><strong>Tipo de Césped:</strong> {field.tipo_de_césped}</p>
+        <p><strong>Número de Campos:</strong> {field.campo}</p>
+        <p><strong>Extras:</strong> {field.extras}</p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .renta-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .debug-info {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+  }
+
+  .content-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .field-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  h1 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+</style>
+
