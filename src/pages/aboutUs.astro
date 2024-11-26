@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Acerca de SportZone - Tu plataforma de fútbol amateur">
+  <main class="about-us-container">
+    <h1>Acerca de SportZone</h1>
+    <div class="bento-grid">
+      <div class="bento-item nosotros">
+        <h2>Nosotros</h2>
+        <p>SportZone es la plataforma líder en la organización y gestión de fútbol amateur. Conectamos a jugadores, equipos y canchas para crear experiencias deportivas inolvidables.</p>
+      </div>
+      <div class="bento-item mision">
+        <h2>Misión</h2>
+        <p>Nuestra misión es fomentar la pasión por el fútbol, facilitando el acceso a canchas de calidad y la organización de partidos y torneos para todos los niveles de juego.</p>
+      </div>
+      <div class="bento-item vision">
+        <h2>Visión</h2>
+        <p>Aspiramos a ser la plataforma de referencia en el fútbol amateur, creando una comunidad global de jugadores conectados por su amor al deporte.</p>
+      </div>
+      <div class="bento-item estadisticas">
+        <h2>SportZone en Números</h2>
+        <ul>
+          <li><strong>20+</strong> lugares diferentes</li>
+          <li><strong>5 años</strong> de experiencia</li>
+          <li><strong>10,000+</strong> partidos organizados</li>
+          <li><strong>50,000+</strong> jugadores activos</li>
+        </ul>
+      </div>
+      <div class="bento-item valores">
+        <h2>Nuestros Valores</h2>
+        <ul>
+          <li>Pasión por el fútbol</li>
+          <li>Comunidad y compañerismo</li>
+          <li>Innovación constante</li>
+          <li>Compromiso con la calidad</li>
+        </ul>
+      </div>
+      <div class="bento-item equipo">
+        <h2>Nuestro Equipo</h2>
+        <p>Somos un grupo diverso de apasionados por el deporte y la tecnología, trabajando juntos para mejorar la experiencia del fútbol amateur.</p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .about-us-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .bento-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .bento-item h2 {
+    font-size: 1.5rem;
+    color: #008000;
+    margin-bottom: 1rem;
+  }
+
+  .bento-item p, .bento-item ul {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .bento-item ul {
+    padding-left: 1.2rem;
+  }
+
+  .bento-item li {
+    margin-bottom: 0.5rem;
+  }
+
+  .nosotros {
+    grid-column: span 2;
+  }
+
+  .estadisticas {
+    grid-column: span 2;
+  }
+
+  .estadisticas ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .estadisticas li {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .estadisticas strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #008000;
+  }
+
+  @media (max-width: 768px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .nosotros, .estadisticas {
+      grid-column: span 1;
+    }
+
+    .estadisticas ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

@@ -38,7 +38,7 @@ export default function Header() {
 
         <nav className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
           <ul>
-            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/aboutUs">Nosotros</a></li>
             <li><a href="/canchas">Canchas</a></li>
             <li><a href="/partidos">Partidos</a></li>
             <li><a href="/torneos">Torneos</a></li>
