@@ -40,6 +40,16 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
 
   const nextDays = getNextFourDays();
   
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity()) {
+      setIsPaymentModalOpen(true);
+    } else {
+      form.classList.add('form-validated');
+    }
+  }
+  
   return (
     <div className="renta-container">
       {Array.from({ length: numCampos }, (_, i) => (
@@ -95,7 +105,7 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                 
                 <div className="payment-section">
                   <h2>Métodos de pago</h2>
-                  <div className="payment-form">
+                  <form className="payment-form" onSubmit={handleSubmit}>
                     <div className="payment-options">
                       <label className="payment-option">
                         <input type="radio" name={`payment-${i}`} value="card" defaultChecked />
@@ -106,6 +116,14 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                           type="text"
                           placeholder="0000-0000-0000-0000"
                           className="card-number-input"
+                          required
+                          pattern="\d{4}-\d{4}-\d{4}-\d{4}"
+                          maxLength={19}
+                          onChange={(e) => {
+                            const value = e.target.value.replace(/\D/g, '');
+                            const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1-');
+                            e.target.value = formattedValue;
+                          }}
                         />
                         <div className="card-logos">
                           <img src="/images/visa-logo.webp" alt="Visa" className="card-logo" />
@@ -119,6 +137,21 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                             type="text"
                             placeholder="MM/YY"
                             className="form-input"
+                            required
+                            pattern="(0[1-9]|1[0-2])\/([2-9][4-9]|[3-9][0-9])"
+                            maxLength={5}
+                            onChange={(e) => {
+                              const value = e.target.value.replace(/\D/g, '');
+                              const month = value.slice(0, 2);
+                              const year = value.slice(2, 4);
+                              if (month.length === 2 && year.length === 0) {
+                                e.target.value = `${month}/`;
+                              } else if (month.length === 2 && year.length > 0) {
+                                e.target.value = `${month}/${year}`;
+                              } else {
+                                e.target.value = value;
+                              }
+                            }}
                           />
                         </div>
                         <div className="form-group">
@@ -127,6 +160,12 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                             type="text"
                             placeholder="000"
                             className="form-input"
+                            required
+                            pattern="\d{3}"
+                            maxLength={3}
+                            onChange={(e) => {
+                              e.target.value = e.target.value.replace(/\D/g, '');
+                            }}
                           />
                         </div>
                       </div>
@@ -146,6 +185,12 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                             type="text"
                             placeholder="12345"
                             className="form-input"
+                            required
+                            pattern="\d{5}"
+                            maxLength={5}
+                            onChange={(e) => {
+                              e.target.value = e.target.value.replace(/\D/g, '');
+                            }}
                           />
                         </div>
                       </div>
@@ -159,12 +204,13 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
                       <img src="/images/paypal-logo.png" alt="PayPal" className="paypal-logo" />
                     </label>
                     <button 
+                      type="submit"
                       className="pay-button"
-                      onClick={() => setIsPaymentModalOpen(true)}
+                      disabled={!selectedDate || !selectedTime}
                     >
                       Pagar
                     </button>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -178,4 +224,3 @@ export default function RentaAccordion({ numCampos }: RentaAccordionProps) {
     </div>
   )
 }
-
