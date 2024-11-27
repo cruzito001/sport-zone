@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import './RentFieldModal.css';
+import '../RentFieldModal/RentFieldModal.css'; // Reutilizamos los estilos existentes
 
-interface RentFieldModalProps {
+interface CarouselRentFieldModalProps {
+  isOpen: boolean;
   onClose: () => void;
 }
 
-const RentFieldModal: React.FC<RentFieldModalProps> = ({ onClose }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface FormData {
+  personName: string;
+  placeName: string;
+  address: string;
+  phone: string;
+}
+
+const CarouselRentFieldModal: React.FC<CarouselRentFieldModalProps> = ({ isOpen, onClose }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     personName: '',
     placeName: '',
     address: '',
@@ -16,17 +23,16 @@ const RentFieldModal: React.FC<RentFieldModalProps> = ({ onClose }) => {
   });
 
   useEffect(() => {
-    const handleOpenModal = () => setIsOpen(true);
-    const handleCloseModal = () => setIsOpen(false);
-
-    window.addEventListener('openRentFieldModal', handleOpenModal);
-    window.addEventListener('closeRentFieldModal', handleCloseModal);
-
-    return () => {
-      window.removeEventListener('openRentFieldModal', handleOpenModal);
-      window.removeEventListener('closeRentFieldModal', handleCloseModal);
-    };
-  }, []);
+    if (!isOpen) {
+      setFormSubmitted(false);
+      setFormData({
+        personName: '',
+        placeName: '',
+        address: '',
+        phone: '',
+      });
+    }
+  }, [isOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,18 +45,6 @@ const RentFieldModal: React.FC<RentFieldModalProps> = ({ onClose }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-    setFormSubmitted(false);
-    setFormData({
-      personName: '',
-      placeName: '',
-      address: '',
-      phone: '',
-    });
-    onClose();
   };
 
   if (!isOpen) return null;
@@ -124,12 +118,12 @@ const RentFieldModal: React.FC<RentFieldModalProps> = ({ onClose }) => {
           )}
         </div>
         <div className="modal-footer">
-          <button onClick={handleClose} className="close-button">Cerrar</button>
+          <button onClick={onClose} className="close-button">Cerrar</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default RentFieldModal;
+export default CarouselRentFieldModal;
 

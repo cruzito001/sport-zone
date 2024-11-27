@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import './Carousel.css'
-import RentFieldModal from '../RentFieldModal/RentFieldModal'
+import CarouselRentFieldModal from '../CarouselFieldModal/CarouselFieldModal'
 
 const carouselItems = [
   { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/rentar' },
   { image: '/images/poner-en-renta.jpg', title: 'Poner en Renta', link: '#' },
-  { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/partidos' },
-  { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/partidos' },
+  { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/crear-partido' },
+  { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/unirse' },
   { image: '/images/unirse-torneo.jpg', title: 'Unirse a Torneo', link: '/torneos' },
 ]
 
@@ -113,7 +113,7 @@ export default function Carousel() {
           ))}
         </div>
       </div>
-      {isModalOpen && <RentFieldModal onClose={() => setIsModalOpen(false)} />}
+      <CarouselRentFieldModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }
