@@ -3,10 +3,10 @@ import './Carousel.css'
 import CarouselRentFieldModal from '../CarouselFieldModal/CarouselFieldModal'
 
 const carouselItems = [
-  { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/rentar' },
+  { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/canchas' },
   { image: '/images/poner-en-renta.jpg', title: 'Poner en Renta', link: '#' },
-  { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/crear-partido' },
-  { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/unirse' },
+  { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/partidos' },
+  { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/partidos' },
   { image: '/images/unirse-torneo.jpg', title: 'Unirse a Torneo', link: '/torneos' },
 ]
 
