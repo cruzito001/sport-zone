@@ -4,142 +4,144 @@ import ContactForm from '../components/ContactForm/ContactForm';
 ---
 
 <Layout title="Contacto - SportZone">
-    <main class="contact-container">
-      <h1>Contacto</h1>
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="card info-card">
-            <div class="card-header">
-              <div class="modal-buttons">
-                <span class="modal-button red"></span>
-                <span class="modal-button yellow"></span>
-                <span class="modal-button green"></span>
-              </div>
-              <h2>Información de Contacto</h2>
-            </div>
-            <div class="card-content">
-              <p><strong>Dirección:</strong> Av. Pablo Livas 2011, La Pastora, 67140 Guadalupe, N.L.</p>
-              <p><strong>Teléfono:</strong> +52 81 1169 3122</p>
-              <p><strong>Email:</strong> info@sportzone.com</p>
-              <p><strong>Horario:</strong> Lunes a Viernes de 9:00 AM a 6:00 PM</p>
-            </div>
+<main class="contact-container">
+  <h1>Contacto</h1>
+  <div class="contact-content">
+    <div class="contact-info">
+      <div class="card info-card">
+        <div class="card-header">
+          <div class="modal-buttons">
+            <span class="modal-button red"></span>
+            <span class="modal-button yellow"></span>
+            <span class="modal-button green"></span>
           </div>
-          <div class="card map-card">
-            <div class="card-header">
-              <div class="modal-buttons">
-                <span class="modal-button red"></span>
-                <span class="modal-button yellow"></span>
-                <span class="modal-button green"></span>
-              </div>
-              <h2>Ubicación</h2>
-            </div>
-            <div class="card-content">
-              <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.3013949339733!2d-100.28024492374762!3d25.67202631360825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bfb09c6b4a2f%3A0x200e4c3d8f12a1c8!2sEstadio%20BBVA!5e0!3m2!1sen!2smx!4v1701130519131!5m2!1sen!2smx"
-      width="100%"
-      height="300"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-            </div>
-          </div>
+          <h2>Información de Contacto</h2>
         </div>
-        <div class="contact-form">
-          <div class="card form-card">
-            <div class="card-header">
-              <div class="modal-buttons">
-                <span class="modal-button red"></span>
-                <span class="modal-button yellow"></span>
-                <span class="modal-button green"></span>
-              </div>
-              <h2>Envíanos un Mensaje</h2>
-            </div>
-            <div class="card-content">
-              <ContactForm client:load />
-            </div>
-          </div>
+        <div class="card-content">
+          <p><strong>Dirección:</strong> Av. Pablo Livas 2011, La Pastora, 67140 Guadalupe, N.L.</p>
+          <p><strong>Teléfono:</strong> +52 81 1169 3122</p>
+          <p><strong>Email:</strong> info@sportzone.com</p>
+          <p><strong>Horario:</strong> Lunes a Viernes de 9:00 AM a 6:00 PM</p>
         </div>
       </div>
-    </main>
-    </Layout>    
+      <div class="card map-card">
+        <div class="card-header">
+          <div class="modal-buttons">
+            <span class="modal-button red"></span>
+            <span class="modal-button yellow"></span>
+            <span class="modal-button green"></span>
+          </div>
+          <h2>Ubicación</h2>
+        </div>
+        <div class="card-content">
+          <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.3013949339733!2d-100.28024492374762!3d25.67202631360825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bfb09c6b4a2f%3A0x200e4c3d8f12a1c8!2sEstadio%20BBVA!5e0!3m2!1sen!2smx!4v1701130519131!5m2!1sen!2smx"
+  width="100%"
+  height="300"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="card form-card">
+        <div class="card-header">
+          <div class="modal-buttons">
+            <span class="modal-button red"></span>
+            <span class="modal-button yellow"></span>
+            <span class="modal-button green"></span>
+          </div>
+          <h2>Envíanos un Mensaje</h2>
+        </div>
+        <div class="card-content">
+          <ContactForm client:load />
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</Layout>
 
 <style>
+.contact-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.contact-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.card {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.modal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.modal-button.red { background-color: #ff5f56; }
+.modal-button.yellow { background-color: #ffbd2e; }
+.modal-button.green { background-color: #27c93f; }
+
+.card-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content p {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
   .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
-
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-  }
-
-  .contact-content {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .contact-info, .contact-form {
-    flex: 1;
-    min-width: 300px;
-  }
-
-  .card {
-    background-color: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-  }
-
-  .card-header {
-    background-color: #f0f0f0;
-    padding: 12px 15px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #e0e0e0;
-  }
-
-  .modal-buttons {
-    display: flex;
-    gap: 8px;
-    margin-right: 15px;
-  }
-
-  .modal-button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-  }
-
-  .modal-button.red { background-color: #ff5f56; }
-  .modal-button.yellow { background-color: #ffbd2e; }
-  .modal-button.green { background-color: #27c93f; }
-
-  .card-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-
-  .card-content {
     padding: 1rem;
   }
-
-  .info-card p {
-    margin: 0.5rem 0;
+  
+  h1 {
+    font-size: 2rem;
   }
-
-  @media (max-width: 768px) {
-    .contact-content {
-      flex-direction: column;
-    }
-  }
+}
 </style>
 
