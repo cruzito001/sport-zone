@@ -67,16 +67,14 @@ import ContactForm from '../components/ContactForm/ContactForm';
 
 <style>
 .contact-container {
-  width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
 .contact-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -138,9 +136,16 @@ h1 {
   .contact-container {
     padding: 1rem;
   }
-  
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
   h1 {
     font-size: 2rem;
+  }
+  .card {
+    width: 100%;
   }
 }
 </style>
