@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { popularFields } from '../data/popularFields';
+import RentFieldModal from '../components/RentFieldModal/RentFieldModal';
 ---
 
 <Layout title="Canchas - SportZone">
@@ -20,6 +21,7 @@ import { popularFields } from '../data/popularFields';
         <option value="Artificial">Artificial</option>
         <option value="Natural">Natural</option>
       </select>
+      <button id="rentFieldButton" class="rent-field-button">Poner Mi Cancha en Renta</button>
     </div>
     <div class="table-container">
       <table id="canchasTable">
@@ -59,6 +61,9 @@ import { popularFields } from '../data/popularFields';
           ))}
         </tbody>
       </table>
+    </div>
+    <div id="modalContainer">
+      <RentFieldModal client:load />
     </div>
   </main>
 </Layout>
@@ -162,41 +167,69 @@ import { popularFields } from '../data/popularFields';
     background-color: #006400;
   }
 
+  .rent-field-button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #4ade80;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .rent-field-button:hover {
+    background-color: #22c55e;
+  }
+
   @media (max-width: 768px) {
     .filters {
       flex-direction: column;
     }
 
-    .filter-select {
+    .filter-select, .rent-field-button {
       width: 100%;
     }
   }
 </style>
 
 <script>
-  function filterTable() {
+  document.addEventListener('DOMContentLoaded', () => {
+    const rentFieldButton = document.getElementById('rentFieldButton');
+    
+    if (rentFieldButton) {
+      rentFieldButton.addEventListener('click', () => {
+        const event = new CustomEvent('openRentFieldModal');
+        window.dispatchEvent(event);
+        console.log('Evento openRentFieldModal disparado'); // Para depuración
+      });
+    }
+
+    // Mantener la funcionalidad de filtrado existente
     const tipoFilter = document.getElementById('tipoFilter') as HTMLSelectElement;
     const cespedFilter = document.getElementById('cespedFilter') as HTMLSelectElement;
-    const table = document.getElementById('canchasTable') as HTMLTableElement;
-    const rows = table.getElementsByTagName('tr');
 
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const tipo = row.getElementsByTagName('td')[1].textContent || '';
-      const cesped = row.getElementsByTagName('td')[2].textContent || '';
+    function filterTable() {
+      const table = document.getElementById('canchasTable') as HTMLTableElement;
+      const rows = table.getElementsByTagName('tr');
 
-      const tipoMatch = tipoFilter.value === '' || 
-        tipo.toLowerCase().includes(tipoFilter.value.toLowerCase());
-      const cespedMatch = cespedFilter.value === '' || 
-        cesped.toLowerCase().includes(cespedFilter.value.toLowerCase());
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const tipo = row.getElementsByTagName('td')[1].textContent || '';
+        const cesped = row.getElementsByTagName('td')[2].textContent || '';
 
-      row.style.display = tipoMatch && cespedMatch ? '' : 'none';
+        const tipoMatch = tipoFilter.value === '' || 
+          tipo.toLowerCase().includes(tipoFilter.value.toLowerCase());
+        const cespedMatch = cespedFilter.value === '' || 
+          cesped.toLowerCase().includes(cespedFilter.value.toLowerCase());
+
+        row.style.display = tipoMatch && cespedMatch ? '' : 'none';
+      }
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('tipoFilter')?.addEventListener('change', filterTable);
-    document.getElementById('cespedFilter')?.addEventListener('change', filterTable);
+    tipoFilter?.addEventListener('change', filterTable);
+    cespedFilter?.addEventListener('change', filterTable);
   });
 </script>
 

@@ -1,17 +1,19 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import './Carousel.css'
+import RentFieldModal from '../RentFieldModal/RentFieldModal'
 
 const carouselItems = [
-  { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/canchas' },
-  { image: '/images/poner-en-renta.jpg', title: 'Poner en Renta', link: '/poner-en-renta' },
-  { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/crear-partido' },
-  { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/unirse' },
+  { image: '/images/rentar-cancha.jpg', title: 'Rentar Cancha', link: '/rentar' },
+  { image: '/images/poner-en-renta.jpg', title: 'Poner en Renta', link: '#' },
+  { image: '/images/crear-partido.jpg', title: 'Crear Partido', link: '/partidos' },
+  { image: '/images/unirse-partidos.jpg', title: 'Unirse a Partidos', link: '/partidos' },
   { image: '/images/unirse-torneo.jpg', title: 'Unirse a Torneo', link: '/torneos' },
 ]
 
 export default function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -49,6 +51,14 @@ export default function Carousel() {
     }
   }, [startTimer])
 
+  const handleExploreClick = (item: typeof carouselItems[0]) => {
+    if (item.title === 'Poner en Renta') {
+      setIsModalOpen(true)
+      return
+    }
+    window.location.href = item.link
+  }
+
   return (
     <div className="carousel-container">
       <div className="carousel-window">
@@ -80,7 +90,12 @@ export default function Carousel() {
                 />
                 <div className="carousel-content">
                   <h2>{item.title}</h2>
-                  <a href={item.link} className="cta-button">Explorar</a>
+                  <button 
+                    className="cta-button"
+                    onClick={() => handleExploreClick(item)}
+                  >
+                    Explorar
+                  </button>
                 </div>
               </div>
             ))}
@@ -98,6 +113,7 @@ export default function Carousel() {
           ))}
         </div>
       </div>
+      {isModalOpen && <RentFieldModal onClose={() => setIsModalOpen(false)} />}
     </div>
   )
 }
