@@ -9,7 +9,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica para enviar el formulario
+    // lógica para enviar form si me da tiempo jajaja
     console.log('Formulario enviado:', { name, email, message })
     setSubmitted(true)
   }

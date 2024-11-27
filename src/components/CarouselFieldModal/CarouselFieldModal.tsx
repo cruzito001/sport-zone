@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../RentFieldModal/RentFieldModal.css'; // Reutilizamos los estilos existentes
+import '../RentFieldModal/RentFieldModal.css';
 
 interface CarouselRentFieldModalProps {
   isOpen: boolean;

@@ -96,14 +96,14 @@
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #008000; /* Changed from #4ade80 */
+  background-color: #008000;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
 }
 
 .nav-menu a:hover {
-  color: #008000; /* Changed from #4ade80 */
+  color: #008000;
 }
 
 .nav-menu a:hover::before {
