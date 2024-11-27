@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { torneos } from '../data/torneos';
+import InscripcionModal from '../components/InscripcionModal/InscripcionModal';
+---
+
+<Layout title="Torneos - SportZone">
+  <main class="torneos-container">
+    <div class="aviso">
+      <p>¿Quieres crear tu propio torneo? ¡Contáctanos para más información!</p>
+      <a href="/contacto" class="contact-button">Contactar</a>
+    </div>
+
+    <h1>Torneos Disponibles</h1>
+
+    <div class="bento-grid">
+      {torneos.map((torneo) => (
+        <div class="torneo-card">
+          <div class="card-header">
+            <h2>{torneo.nombre}</h2>
+            <span class={`tipo ${torneo.tipo.toLowerCase()}`}>{torneo.tipo}</span>
+          </div>
+          <div class="card-body">
+            <p><strong>Lugar:</strong> {torneo.lugar}</p>
+            <p><strong>Categoría:</strong> {torneo.categoria}</p>
+            <p><strong>Equipos:</strong> {torneo.equiposInscritos}</p>
+            <p><strong>Inicio:</strong> {new Date(torneo.fechaInicio).toLocaleDateString('es-ES', {day: '2-digit', month: '2-digit', year: 'numeric'}).replace(/\//g, '-')}</p>
+            <p><strong>Premio:</strong> {torneo.premio}</p>
+          </div>
+          <div class="card-footer">
+            <button class="join-button" data-torneo-nombre={torneo.nombre}>Unirse al Torneo</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <div id="modal-container"></div>
+</Layout>
+
+<script>
+  import React from 'react';
+  import { createRoot } from 'react-dom/client';
+  import InscripcionModal from '../components/InscripcionModal/InscripcionModal';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const modalContainer = document.getElementById('modal-container');
+    if (!modalContainer) return;
+
+    const root = createRoot(modalContainer);
+
+    document.querySelectorAll('.join-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const torneoNombre = button.getAttribute('data-torneo-nombre');
+        if (torneoNombre) {
+          const props = {
+            isOpen: true,
+            onClose: () => root.render(null),
+            torneoNombre: torneoNombre
+          };
+          
+          root.render(React.createElement(InscripcionModal, props));
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .torneos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .aviso {
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .aviso p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-button {
+    background-color: #008000;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .contact-button:hover {
+    background-color: #006400;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .torneo-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .torneo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-header {
+    background-color: #f1f3f5;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+
+  .tipo {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+
+  .tipo.competitivo {
+    background-color: #fecaca;
+    color: #dc2626;
+  }
+
+  .tipo.amistoso {
+    background-color: #bfdbfe;
+    color: #2563eb;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .card-footer {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .join-button {
+    background-color: #008000;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .join-button:hover {
+    background-color: #006400;
+  }
+
+  @media (max-width: 768px) {
+    .aviso {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .aviso p {
+      margin-bottom: 1rem;
+    }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
